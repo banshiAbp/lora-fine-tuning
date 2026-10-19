@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+  <title id="title">Project TuneCraft LoRA fine-tuning architecture</title>
+  <desc id="desc">Dolly data is formatted into conversations, used to train TinyLlama LoRA adapters, evaluated against the base model, and saved for reload.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#315a8a"/>
+    </marker>
+    <style>
+      .title { font: 700 32px Arial, sans-serif; fill: #17324d; }
+      .lane { font: 700 20px Arial, sans-serif; fill: #315a8a; }
+      .box { fill: #f6f9fc; stroke: #315a8a; stroke-width: 2; rx: 14; }
+      .accent { fill: #e7f4ec; stroke: #237a4b; stroke-width: 2; rx: 14; }
+      .text { font: 600 17px Arial, sans-serif; fill: #17324d; text-anchor: middle; }
+      .small { font: 14px Arial, sans-serif; fill: #47627b; text-anchor: middle; }
+      .arrow { stroke: #315a8a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .divider { stroke: #c8d5e3; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1400" height="720" fill="#ffffff"/>
+  <text x="700" y="48" class="title" text-anchor="middle">Project TuneCraft — TinyLlama LoRA Pipeline</text>
+  <line x1="40" y1="375" x2="1360" y2="375" class="divider"/>
+
+  <text x="55" y="100" class="lane">Offline training</text>
+  <rect x="55" y="135" width="205" height="125" class="box"/>
+  <text x="157" y="180" class="text">Dolly-15K</text>
+  <text x="157" y="210" class="small">schema validation</text>
+  <text x="157" y="234" class="small">seeded sampling</text>
+
+  <path d="M260 198 H325" class="arrow"/>
+  <rect x="325" y="135" width="225" height="125" class="box"/>
+  <text x="437" y="175" class="text">Conversation format</text>
+  <text x="437" y="207" class="small">1,000 train</text>
+  <text x="437" y="231" class="small">100 held out</text>
+
+  <path d="M550 198 H615" class="arrow"/>
+  <rect x="615" y="135" width="225" height="125" class="box"/>
+  <text x="727" y="175" class="text">TinyLlama 1.1B</text>
+  <text x="727" y="207" class="small">frozen base weights</text>
+  <text x="727" y="231" class="small">FP16 on T4</text>
+
+  <path d="M840 198 H905" class="arrow"/>
+  <rect x="905" y="135" width="215" height="125" class="accent"/>
+  <text x="1012" y="175" class="text">LoRA SFT</text>
+  <text x="1012" y="207" class="small">q_proj + v_proj</text>
+  <text x="1012" y="231" class="small">&lt;1% trainable</text>
+
+  <path d="M1120 198 H1185" class="arrow"/>
+  <rect x="1185" y="135" width="165" height="125" class="accent"/>
+  <text x="1267" y="175" class="text">Adapter</text>
+  <text x="1267" y="207" class="small">weights + config</text>
+  <text x="1267" y="231" class="small">tokenizer</text>
+
+  <text x="55" y="425" class="lane">Evaluation and deployment</text>
+  <rect x="55" y="470" width="245" height="125" class="box"/>
+  <text x="177" y="510" class="text">Required prompts</text>
+  <text x="177" y="542" class="small">deterministic decoding</text>
+  <text x="177" y="566" class="small">base responses</text>
+
+  <path d="M300 533 H390" class="arrow"/>
+  <rect x="390" y="470" width="260" height="125" class="box"/>
+  <text x="520" y="510" class="text">Before / after</text>
+  <text x="520" y="542" class="small">response review</text>
+  <text x="520" y="566" class="small">held-out loss + perplexity</text>
+
+  <path d="M650 533 H740" class="arrow"/>
+  <rect x="740" y="470" width="255" height="125" class="accent"/>
+  <text x="867" y="510" class="text">Clean reload test</text>
+  <text x="867" y="542" class="small">base + saved PEFT adapter</text>
+  <text x="867" y="566" class="small">output parity</text>
+
+  <path d="M995 533 H1085" class="arrow"/>
+  <rect x="1085" y="470" width="265" height="125" class="accent"/>
+  <text x="1217" y="510" class="text">Client inference</text>
+  <text x="1217" y="542" class="small">one shared base model</text>
+  <text x="1217" y="566" class="small">switchable adapters</text>
+
+  <text x="700" y="675" class="small">Artifacts: adapter_model.safetensors · adapter_config.json · run_manifest.json · response_comparison.json</text>
+</svg>

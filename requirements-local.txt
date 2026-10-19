@@ -1,0 +1,13 @@
+numpy>=1.26,<3
+pandas>=2,<4
+# Install a CUDA-specific PyTorch wheel separately; see instructions.md.
+datasets==5.1.0
+transformers==5.20.1
+trl==1.16.0
+peft==0.21.2
+accelerate==1.15.0
+huggingface-hub==1.33.0
+safetensors>=0.4,<1
+matplotlib>=3.8,<4
+jupyterlab>=4,<5
+ipykernel>=6,<8

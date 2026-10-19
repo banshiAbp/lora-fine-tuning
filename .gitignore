@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+.cache/
+
+# Hugging Face caches and generated training artifacts
+.cache/huggingface/
+huggingface/
+sft-lora-tinyllama/
+checkpoint-*/
+wandb/
+runs/
+
+# Keep only artifact documentation in version control
+artifacts/local_checkpoint/*
+!artifacts/local_checkpoint/README.txt

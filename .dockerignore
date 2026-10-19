@@ -1,0 +1,6 @@
+.git
+.venv
+.ipynb_checkpoints
+sft-lora-tinyllama
+artifacts/local_checkpoint/*
+!artifacts/local_checkpoint/README.txt
